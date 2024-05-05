@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mule xmlns:http="http://www.mulesoft.org/schema/mule/http" xmlns="http://www.mulesoft.org/schema/mule/core"
+	xmlns:doc="http://www.mulesoft.org/schema/mule/documentation"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd">
+	<http:listener-config name="HTTP_Listener_config" doc:name="HTTP Listener config" doc:id="c613de6a-8b45-4276-bda7-63e2b6643d05" >
+		<http:listener-connection host="0.0.0.0" port="8014" />
+	</http:listener-config>
+	<flow name="Mainflow" doc:id="8106f082-b24b-4bea-828b-cdf4b8195bb1" >
+		<http:listener doc:name="Listener" doc:id="a9a3cbe4-4677-4e71-be64-589452268158" config-ref="HTTP_Listener_config" path="/fourthproject"/>
+		<logger level="INFO" doc:name="Logger" doc:id="88dcddde-0b94-4767-921f-882331775a58" message="welcome to forthproject"/>
+	</flow>
+	<flow name="fourthprojectFlow" doc:id="7f025a65-2fd9-4e3f-8096-c06713bbcb00" />
+</mule>

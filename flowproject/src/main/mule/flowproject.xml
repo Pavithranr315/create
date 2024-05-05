@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mule xmlns:http="http://www.mulesoft.org/schema/mule/http" xmlns="http://www.mulesoft.org/schema/mule/core"
+	xmlns:doc="http://www.mulesoft.org/schema/mule/documentation"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd">
+	<http:listener-config name="HTTP_Listener_config" doc:name="HTTP Listener config" doc:id="94df5464-0408-48e3-924e-c7f5b8c0c8c5" >
+		<http:listener-connection host="localhost" port="8035" />
+	</http:listener-config>
+	<flow name="Mainflow" doc:id="60d5a343-cc67-43ee-933e-2653f4a7efa3" >
+		<http:listener doc:name="Listener" doc:id="dd4b1d26-f562-4f1e-ba8b-53c771577605" config-ref="HTTP_Listener_config" path="/flowproject"/>
+		<logger level="INFO" doc:name="Logger" doc:id="4b62a238-e8ed-475c-9b8d-beb8a5d74dbb" message="task done by Pavithra"/>
+		<flow-ref doc:name="privateflow" doc:id="78c5e6d0-02e5-4974-b2e9-fa9669c37c26" name="privateflow"/>
+		<logger level="INFO" doc:name="Mainflow" doc:id="d9ea00b2-4b2b-4a2e-ab03-2ab0861049c3" message="hey welcome to mainflow"/>
+		<flow-ref doc:name="subflow" doc:id="0f82e79c-3a67-450d-963b-bb6e2a2c94b6" name="Sub_Flow"/>
+	</flow>
+	<sub-flow name="Sub_Flow" doc:id="d92eba51-a46f-46b8-aeba-67b03d387181" >
+		<logger level="INFO" doc:name="Logger" doc:id="ff840617-3c75-4f6e-8419-a7c68385c89a" message="==&gt;&gt;hey welcome to subflow==&gt;&gt;"/>
+	</sub-flow>
+	<flow name="privateflow" doc:id="553ba84e-be69-4a4e-b833-9496b5012bc3" >
+		<logger level="INFO" doc:name="Logger" doc:id="e34bf5a1-0e82-4255-86e3-2e6a24c68eea" message="==&gt;&gt;hey welcome to privateflow==&gt;&gt;"/>
+	</flow>
+</mule>
